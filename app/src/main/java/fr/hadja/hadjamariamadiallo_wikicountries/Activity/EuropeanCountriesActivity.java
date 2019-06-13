@@ -13,6 +13,7 @@ import java.util.List;
 
 import fr.hadja.hadjamariamadiallo_wikicountries.Adapter.CountriesDisplayAdapter;
 import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayController;
+import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayControllerEUROPE;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Continent;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Country;
 import fr.hadja.hadjamariamadiallo_wikicountries.R;
@@ -27,7 +28,7 @@ public class EuropeanCountriesActivity extends AppCompatActivity {
         setContentView(R.layout.all_countries_recycler);
         //Debut de l'affichage des pays
         SharedPreferences sharedPreferences = this.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        CountriesDisplayController controller = new CountriesDisplayController(this,
+        CountriesDisplayControllerEUROPE controller = new CountriesDisplayControllerEUROPE(this,
                 sharedPreferences, Continent.EUROPE);
         controller.start();
 

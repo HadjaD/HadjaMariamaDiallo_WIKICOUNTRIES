@@ -17,70 +17,70 @@
             android:layout_width="match_parent"
             android:layout_height="400px"
             android:layout_marginBottom="8dp"
-            android:src="@mipmap/ic_launcher" />
+            />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom ="8dp"
+            android:textSize="20sp"
             android:text="TextView"
-
-            android:textSize="24sp" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/capital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/subregion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/population"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/demonym"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/numericCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
-
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/alpha2code"
@@ -88,7 +88,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"
+            />
 
         <TextView
             android:id="@+id/callingCode"
@@ -96,7 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom ="8dp"
             android:textSize="20sp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"
+             />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

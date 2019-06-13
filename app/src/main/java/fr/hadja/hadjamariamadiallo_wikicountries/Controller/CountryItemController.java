@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 import fr.hadja.hadjamariamadiallo_wikicountries.Activity.CountryItemActivity;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Country;
@@ -18,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CountryItemController implements Callback<Country> {
+public class CountryItemController implements Callback<List<Country>> {
 
     private CountryItemActivity view;
     private SharedPreferences sharedPreferences;
@@ -41,16 +42,15 @@ public class CountryItemController implements Callback<Country> {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         CountryApi countryApi = retrofit.create(CountryApi.class);
-        Call<Country> call = null;
-        /*call = countryApi.getCountry(countryName);*/
+        Call<List<Country>> call = countryApi.getCountry(countryName);
         call.enqueue(this);
 
     }
 
     @Override
-    public void onResponse(Call<Country> call, Response<Country> response) {
+    public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
         if(response.isSuccessful()) {
-            Country country = response.body();
+            Country country = response.body().get(0);
             storeData(country);
             view.displayCountryInformations(country);
         } else {
@@ -59,9 +59,9 @@ public class CountryItemController implements Callback<Country> {
     }
 
     @Override
-    public void onFailure(Call<Country> call, Throwable t) {
+    public void onFailure(Call<List<Country>> call, Throwable t) {
         Country country = getDataFromCache();
-        view.displayCountryInformations(country);
+        //view.displayCountryInformations(country);
         t.printStackTrace();
     }
     private void storeData(Country country) {

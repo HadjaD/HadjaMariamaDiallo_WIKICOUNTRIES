@@ -1,13 +1,14 @@
 package fr.hadja.hadjamariamadiallo_wikicountries.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,11 +16,12 @@ import java.util.List;
 
 import fr.hadja.hadjamariamadiallo_wikicountries.Activity.CountryItemActivity;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Country;
+import fr.hadja.hadjamariamadiallo_wikicountries.PicassoTrustAll;
 import fr.hadja.hadjamariamadiallo_wikicountries.R;
 
 public class CountriesDisplayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Country> countryList;
-
+    private Context context;
     public CountriesDisplayAdapter(List<Country> countryList) {
         this.countryList = countryList;
     }
@@ -40,19 +42,11 @@ public class CountriesDisplayAdapter extends RecyclerView.Adapter<RecyclerView.V
         if(holder instanceof DataHolder){
 
             final DataHolder dataHolder = (DataHolder)holder;
-            final Country country = countryList.get(dataHolder.getAdapterPosition()
-            );
+            final Country country = countryList.get(position);
             dataHolder.cName.setText(country.getName());
-            Picasso.with(dataHolder.card.getContext()).load(country.getFlag()).into(dataHolder.card);
-            dataHolder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(dataHolder.edit.getContext(), CountryItemActivity.class);
-                    intent.putExtra("cName",country.getName());
-
-                    dataHolder.edit.getContext().startActivity(intent);
-                }
-            });
+            PicassoTrustAll.getInstance(dataHolder.card.getContext()).load(country.getFlag())
+                    .placeholder(R.mipmap.ic_launcher_round).resize(100,100)
+                    .into(dataHolder.card);
 
         }
     }
@@ -77,15 +71,22 @@ public class CountriesDisplayAdapter extends RecyclerView.Adapter<RecyclerView.V
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, getItemCount());
     }
-    public class DataHolder extends RecyclerView.ViewHolder{
-        Button edit;
+    public class DataHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView cName;
         ImageView card;
+        View layout;
         public DataHolder(View itemView){
             super(itemView);
-            edit = itemView.findViewById(R.id.edit);
+            layout = itemView;
             cName = itemView.findViewById(R.id.cName);
             card = itemView.findViewById(R.id.card);
+            itemView.setOnClickListener(this);
+        }
+        public void onClick(View v){
+            Toast.makeText(v.getContext(), cName.getText(), Toast.LENGTH_SHORT).show();
+            Intent activity = new Intent(v.getContext(), CountryItemActivity.class);
+            activity.putExtra("country", cName.getText());
+            v.getContext().startActivity(activity);
         }
     }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 
 import fr.hadja.hadjamariamadiallo_wikicountries.Adapter.CountriesDisplayAdapter;
 import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayController;
+import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayControllerAFRICA;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Continent;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Country;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.CountryApi;
@@ -38,69 +39,25 @@ public class AfricanCountriesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.countries = new ArrayList<>();
         setContentView(R.layout.all_countries_recycler);
-        this.countryList = findViewById(R.id.country_recycler);
+        countryList = findViewById(R.id.country_recycler);
         countryList.setLayoutManager(new LinearLayoutManager(this));
         countryList.setHasFixedSize(true);
-        /*ArrayList<String> codes = new ArrayList<>();
-        codes.add("224");codes.add("223");
-        this.countries.add(new Country("Guinee", "22",
-                "Conakry", "Ouest", "Ouest", "10 million",
-                "GN", "Zone", "224GN", "https://restcountries.eu/data/png.svg") );
-
-        this.countries.add(new Country("Mali", "223",
-                "Conakry", "Ouest", "Ouest", "10 million",
-                "GN", "Zone", "224GN", "https://restcountries.eu/data/png.svg") );
-        adapter = new CountriesDisplayAdapter(this.countries);
-        countryList.setAdapter(adapter);*/
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-        CountryApi countryApi = retrofit.create(CountryApi.class);
-        Call<List<Country>> call =  countryApi.getAfricanCountries("status:open");
-        //countries.add(new Country());
-
-        call.enqueue(new Callback<List<Country>>() {
-            @Override
-            public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
-                if(response.isSuccessful()) {
-                    System.out.println("Taille de la réponse avant:   "+countries.size());
-                    countries.addAll(response.body());
-                    System.out.println("Taille de la réponse apres:   "+countries.size());
-
-                }else{
-                    System.out.println("Reponse non successful:   "+countries.size());
-                    try {
-                        JSONObject jObjError = new JSONObject(response.errorBody().string());
-                        Toast.makeText(getApplicationContext(), jObjError.getString("message"), Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-                countryList.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Country>> call, Throwable t)
-            {
-                t.printStackTrace();
-            }
-        });
-
+        countryList.setAdapter(adapter);
+        //Debut de l'affichage des pays
+        SharedPreferences sharedPreferences = this.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        CountriesDisplayControllerAFRICA controller = new CountriesDisplayControllerAFRICA(this,
+                sharedPreferences, Continent.AFRICA);
+        controller.start();
 
     }
 
-    /*public void displayCountries(List<Country> countries){
+    public void displayCountries(List<Country> countries){
         countryList = findViewById(R.id.country_recycler);
         countryList.setLayoutManager(new LinearLayoutManager(this));
         countryList.setHasFixedSize(true);
         adapter = new CountriesDisplayAdapter(countries);
         countryList.setAdapter(adapter);
 
-    }*/
+    }
 }

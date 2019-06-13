@@ -16,6 +16,7 @@ import java.util.List;
 
 import fr.hadja.hadjamariamadiallo_wikicountries.Adapter.CountriesDisplayAdapter;
 import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayController;
+import fr.hadja.hadjamariamadiallo_wikicountries.Controller.CountriesDisplayControllerASIA;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Continent;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.Country;
 import fr.hadja.hadjamariamadiallo_wikicountries.Model.CountryApi;
@@ -40,7 +41,7 @@ public class AsianCountriesActivity extends AppCompatActivity {
         countryList.setAdapter(adapter);
         //Debut de l'affichage des pays
         SharedPreferences sharedPreferences = this.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        CountriesDisplayController controller = new CountriesDisplayController(this,
+        CountriesDisplayControllerASIA controller = new CountriesDisplayControllerASIA(this,
                 sharedPreferences, Continent.ASIA);
         controller.start();
     }

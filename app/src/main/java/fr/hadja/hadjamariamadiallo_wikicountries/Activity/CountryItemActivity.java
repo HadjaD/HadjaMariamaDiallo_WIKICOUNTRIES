@@ -33,7 +33,7 @@ public class CountryItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_country_item);
         //LoadData via CountryItemController
         Intent activ = getIntent();
-        String donnee = activ.getStringExtra("cName");
+        String donnee = activ.getStringExtra("country");
         SharedPreferences sharedPreferences = this.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
         CountryItemController controller = new CountryItemController(this,sharedPreferences,donnee);
         controller.start();

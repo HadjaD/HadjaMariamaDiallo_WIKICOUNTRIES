@@ -53,19 +53,6 @@ public class CountriesDisplayController implements Callback<List<Country>> {
         CountryApi countryApi = retrofit.create(CountryApi.class);
         Call<List<Country>> call = null;
         call = countryApi.getAfricanCountries("status:open");
-
-        String continent = view.getClass().getName();
-       /* if( continent.equals(AfricanCountriesActivity.class.getName())){
-            call = countryApi.getAfricanCountries("status:open");
-            this.cont = Continent.AFRICA;
-        }else {
-                if(continent.equals(EuropeanCountriesActivity.class.getName())) {
-                    call = countryApi.getEuropeanCountries();
-                    this.cont = Continent.EUROPE;
-                }else{
-                    call = countryApi.getAsianCountries();
-                 }
-        }*/
         call.enqueue(this);
 
     }
@@ -76,12 +63,12 @@ public class CountriesDisplayController implements Callback<List<Country>> {
             List<Country> countries = response.body();
             //storeData(countries);
             if(view instanceof AfricanCountriesActivity){
-                //((AfricanCountriesActivity) view).displayCountries(countries);
+                ((AfricanCountriesActivity) view).displayCountries(countries);
             }else{
                 if (view instanceof EuropeanCountriesActivity){
-                   // ((EuropeanCountriesActivity) view).displayCountries(countries);
+                    ((EuropeanCountriesActivity) view).displayCountries(countries);
                 }else{
-                    //((AsianCountriesActivity) view).displayCountries(countries);
+                    ((AsianCountriesActivity) view).displayCountries(countries);
                 }
             }
 
