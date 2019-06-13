@@ -52,7 +52,10 @@ public class CountryItemActivity extends AppCompatActivity {
         callingCode = (TextView) findViewById(R.id.callingCode);
         population = (TextView) findViewById(R.id.population);
 
-        Picasso.with(getApplicationContext()).load(country.getFlag()).into(flag);
+        Picasso.with(getApplicationContext())
+                .load(country.getFlag())
+                .placeholder(R.mipmap.ic_launcher_round)
+                .into(flag);
         name.setText("Nom: "+country.getName());
         capital.setText("Capital: " + country.getCapital());
         subregion.setText("Subregion: " + country.getSubregion());
