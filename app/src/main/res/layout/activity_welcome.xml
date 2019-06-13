@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
+    android:layout_marginLeft="24dp"
+    android:orientation="vertical"
+    tools:context=".Activity.WelcomeActivity">
+
+    <TextView
+        android:id="@+id/bienvenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:text="@string/welcome"
+        android:layout_gravity="center"
+        android:textColor="#4a4a4a"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_bienvenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:text="@string/welcome_texte"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start" />
+
+</LinearLayout>

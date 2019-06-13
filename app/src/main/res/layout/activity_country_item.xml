@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CountryItemActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="match_parent"
+            android:layout_height="400px"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/capital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/subregion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/population"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/demonym"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/numericCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/alpha2code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+            android:textSize="20sp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/callingCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom ="8dp"
+            android:textSize="20sp"
+            android:text="TextView" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
